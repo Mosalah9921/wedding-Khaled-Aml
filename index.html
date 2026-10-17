@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no, date=no, email=no, address=no">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#F6EFE3">
+    <title>The Wedding of Khaled &amp; Aml</title>
+
+    <!-- SEO & Social sharing (WhatsApp / Facebook preview)
+         ⚠️ بعد الرفع: غيّر SITE_URL في السطور دي للرابط الحقيقي،
+            (صورة المعاينة = assets/invitation_en.jpg) -->
+    <meta name="description" content="You are joyfully invited to the wedding of Khaled &amp; Aml — Friday, 23 October 2026, 3:00 PM, Moments Villa, Zagazig. يسعدنا دعوتكم لحضور حفل زفاف خالد وأمل.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ar_EG">
+    <meta property="og:title" content="The Wedding of Khaled &amp; Aml 💍">
+    <meta property="og:description" content="Friday, 23 October 2026 · 3:00 PM · Moments Villa, Zagazig">
+    <meta property="og:url" content="https://SITE_URL/">
+    <meta property="og:image" content="https://SITE_URL/assets/invitation_en.jpg" id="og-image-meta">
+    <meta property="og:image:width" content="958">
+    <meta property="og:image:height" content="1280">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%236B3426%22/><text x=%2250%22 y=%2263%22 font-size=%2234%22 text-anchor=%22middle%22 fill=%22%23E9D3A3%22 font-family=%22serif%22>K&amp;A</text></svg>">
+
+    <!-- Fonts
+         Arabic : Aref Ruqaa (names) · Amiri (headings) · IBM Plex Sans Arabic (text)
+         English: Cormorant Garamond (names & text) · Montserrat (labels) · Great Vibes (&) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css?v=3.0">
+    <!-- If JavaScript is off, still show the invitation -->
+    <noscript><style>html{direction:rtl}.cover{display:none!important}.page,.reveal{opacity:1!important;transform:none!important}body.is-locked{overflow:auto;height:auto}</style></noscript>
+</head>
+<body class="is-locked">
+
+    <audio id="bg-music" loop preload="none">
+        <source src="assets/wedding_song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Language switch -->
+    <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch to English">
+        <span class="lang-toggle__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>
+        </span>
+        <span id="lang-toggle-text">English</span>
+    </button>
+
+    <!-- Floating dock -->
+    <div class="dock" id="dock" aria-hidden="true">
+        <div class="dock__tip" id="audio-tooltip" role="status"></div>
+        <button class="dock__btn dock__btn--music" id="audio-toggle-btn" type="button" aria-label="Play music" data-i18n-aria="aria_music">
+            <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <svg class="dock__note" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+        </button>
+    </div>
+
+    <!-- ===================== 1. ENVELOPE ===================== -->
+    <section class="cover" id="envelope-overlay" aria-label="Invitation envelope">
+        <div class="cover__petals" id="cover-petals" aria-hidden="true"></div>
+
+        <div class="cover__inner">
+            <p class="cover__eyebrow" data-i18n="cover_eyebrow">دعوة خاصة</p>
+            <p class="cover__to" id="cover-to" hidden>
+                <span data-i18n="to_label">إلى</span>
+                <strong id="guest-name"></strong>
+            </p>
+
+            <div class="envelope" id="envelope">
+                <div class="envelope__back" aria-hidden="true"></div>
+
+                <div class="envelope__letter" aria-hidden="true">
+                    <div class="letter__frame">
+                        <p class="letter__pre" data-i18n="save_the_date">احفظوا التاريخ</p>
+                        <p class="letter__names"><span data-i18n="groom">خالد</span> <span class="amp">&amp;</span> <span data-i18n="bride">أمل</span></p>
+                        <p class="letter__date" dir="ltr">23 · 10 · 2026</p>
+                    </div>
+                </div>
+
+                <svg class="envelope__pocket" viewBox="0 0 100 68" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="gSide" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EADCC2"/><stop offset="1" stop-color="#E2D1B2"/></linearGradient>
+                        <linearGradient id="gSideR" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#EADCC2"/><stop offset="1" stop-color="#E2D1B2"/></linearGradient>
+                        <linearGradient id="gBottom" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#F1E6D2"/><stop offset="1" stop-color="#E6D6BA"/></linearGradient>
+                    </defs>
+                    <polygon points="0,0 52,38 0,68" fill="url(#gSide)"/>
+                    <polygon points="100,0 48,38 100,68" fill="url(#gSideR)"/>
+                    <polygon points="0,68 50,30 100,68" fill="url(#gBottom)"/>
+                    <polyline points="0,68 50,30 100,68" fill="none" stroke="#C9AE7E" stroke-opacity=".45" stroke-width=".25" vector-effect="non-scaling-stroke"/>
+                </svg>
+
+                <div class="envelope__address" aria-hidden="true">
+                    <span class="envelope__names"><span data-i18n="groom">خالد</span> <span class="amp">&amp;</span> <span data-i18n="bride">أمل</span></span>
+                </div>
+
+                <div class="envelope__flap" aria-hidden="true">
+                    <div class="flap__face flap__face--out"></div>
+                    <div class="flap__face flap__face--in"></div>
+                </div>
+
+                <button class="seal" id="open-envelope-btn" type="button" aria-label="Open the invitation" data-i18n-aria="aria_open">
+                    <span class="seal__ring" aria-hidden="true"></span>
+                    <span class="seal__mono" data-i18n="monogram">خ&thinsp;&amp;&thinsp;أ</span>
+                </button>
+            </div>
+
+            <p class="cover__hint">
+                <span class="cover__hint-dot" aria-hidden="true"></span>
+                <span data-i18n="click_seal">اضغط على الختم لفتح الدعوة</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- ===================== MAIN ===================== -->
+    <main class="page" id="main-content" aria-hidden="true">
+
+        <!-- 2. INVITATION (wording) -->
+        <section class="hero" id="hero">
+            <div class="paper hero__card reveal">
+                <span class="corner corner--tl" aria-hidden="true"></span>
+                <span class="corner corner--tr" aria-hidden="true"></span>
+                <span class="corner corner--bl" aria-hidden="true"></span>
+                <span class="corner corner--br" aria-hidden="true"></span>
+
+                <p class="hero__greeting" id="hero-greeting" hidden></p>
+
+                <blockquote class="verse">
+                    <p class="verse__text"><span class="verse__br" aria-hidden="true">﴿</span> وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً <span class="verse__br" aria-hidden="true">﴾</span></p>
+                    <cite data-i18n="verse_ref">سورة الروم · 21</cite>
+                </blockquote>
+
+                <div class="ornament" aria-hidden="true">
+                    <span></span>
+                    <svg viewBox="0 0 40 16" width="40" height="16"><path d="M20 2c2 3.4 5 5.4 9 6-4 .6-7 2.6-9 6-2-3.4-5-5.4-9-6 4-.6 7-2.6 9-6z" fill="currentColor"/><circle cx="3" cy="8" r="1.4" fill="currentColor"/><circle cx="37" cy="8" r="1.4" fill="currentColor"/></svg>
+                    <span></span>
+                </div>
+
+                <p class="eyebrow" data-i18n="you_are_invited">بكل الحب والسرور</p>
+                <p class="hero__lead" data-i18n="celebrate_wedding">نتشرف بدعوتكم لحضور حفل زفاف</p>
+
+                <h1 class="names">
+                    <span class="names__one" data-i18n="groom">خالد</span>
+                    <span class="names__amp" aria-hidden="true">&amp;</span>
+                    <span class="names__two" data-i18n="bride">أمل</span>
+                </h1>
+
+                <!-- Date strip -->
+                <div class="datestrip">
+                    <div class="datestrip__side">
+                        <span class="datestrip__label" data-i18n="day_label">اليوم</span>
+                        <span class="datestrip__val" data-i18n="day_name">الجمعة</span>
+                    </div>
+                    <div class="datestrip__main">
+                        <span class="datestrip__month" data-i18n="month">أكتوبر</span>
+                        <span class="datestrip__day">23</span>
+                        <span class="datestrip__year">2026</span>
+                    </div>
+                    <div class="datestrip__side">
+                        <span class="datestrip__label" data-i18n="time_label">الموعد</span>
+                        <span class="datestrip__val" data-i18n="time_short">3 – 6 م</span>
+                    </div>
+                </div>
+
+                <p class="badge">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M2.5 12H5M19 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
+                    <span data-i18n="daytime">حفل نهاري</span>
+                </p>
+
+                <p class="hero__closing" data-i18n="hero_closing">بحضوركم تكتمل فرحتنا</p>
+
+                <div class="btn-row">
+                    <button class="btn btn--solid" id="card-music-btn" type="button">
+                        <svg class="play-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                        <svg class="pause-icon hidden" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        <span id="card-music-btn-text" data-i18n="listen_song">شغّل الموسيقى</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. COUNTDOWN -->
+        <section class="section" id="countdown-sec">
+            <header class="section__head reveal">
+                <p class="eyebrow" data-i18n="countdown_eyebrow">العد التنازلي</p>
+                <h2 class="section__title" data-i18n="special_day_coming">يوم العمر يقترب</h2>
+            </header>
+            <div class="countdown reveal" id="countdown" role="timer" aria-live="off">
+                <div class="countdown__box"><span class="countdown__num" id="days">00</span><span class="countdown__lbl">يوم</span></div>
+                <div class="countdown__box"><span class="countdown__num" id="hours">00</span><span class="countdown__lbl">ساعة</span></div>
+                <div class="countdown__box"><span class="countdown__num" id="minutes">00</span><span class="countdown__lbl">دقيقة</span></div>
+                <div class="countdown__box"><span class="countdown__num" id="seconds">00</span><span class="countdown__lbl">ثانية</span></div>
+            </div>
+            <p class="memory reveal" id="wedding-memory-msg" hidden></p>
+        </section>
+
+        <!-- 4. DETAILS: when & where -->
+        <section class="section" id="details">
+            <header class="section__head reveal">
+                <p class="eyebrow" data-i18n="details_eyebrow">موعدنا</p>
+                <h2 class="section__title" data-i18n="details_title">تفاصيل الحفل</h2>
+            </header>
+
+            <div class="details reveal">
+                <article class="detail">
+                    <span class="detail__ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg></span>
+                    <h3 class="detail__label" data-i18n="date_label">التاريخ</h3>
+                    <p class="detail__val" data-i18n="date_val">الجمعة 23 أكتوبر</p>
+                    <p class="detail__sub" data-i18n="date_sub">سنة 2026</p>
+                </article>
+                <article class="detail">
+                    <span class="detail__ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>
+                    <h3 class="detail__label" data-i18n="time_label">الموعد</h3>
+                    <p class="detail__val" data-i18n="time_val">من 3:00 حتى 6:00</p>
+                    <p class="detail__sub" data-i18n="time_sub">عصرًا · حفل نهاري</p>
+                </article>
+                <!-- Venue card: tapping anywhere (pin, label or name) opens the hall location -->
+                <a class="detail detail--link" href="https://maps.app.goo.gl/WAqdkoQt69wRqXpi8" target="_blank" rel="noopener noreferrer" data-i18n-aria="aria_venue" aria-label="افتح موقع القاعة على الخريطة">
+                    <span class="detail__ico detail__ico--pin" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></span>
+                    <h3 class="detail__label" data-i18n="where">المكان</h3>
+                    <p class="detail__val detail__val--venue" dir="ltr">Moments Villa</p>
+                    <p class="detail__sub" data-i18n="where_val">طريق الأحرار · الزقازيق · الشرقية</p>
+                    <span class="detail__go">
+                        <span data-i18n="view_location">اعرض الموقع</span>
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Map: hall is pinned; tapping "Open the Map" opens the exact venue in Google Maps -->
+            <div class="map reveal" id="venue-map">
+                <span class="map__ph" data-i18n="map_loading">جارٍ تحميل الخريطة…</span>
+
+                <a class="map__pin" href="https://maps.app.goo.gl/WAqdkoQt69wRqXpi8" target="_blank" rel="noopener noreferrer" aria-label="Moments Villa">
+                    <span class="map__pin-ico" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+                    </span>
+                    <span class="map__pin-text">
+                        <b dir="ltr">Moments Villa</b>
+                        <small data-i18n="where_val">طريق الأحرار · الزقازيق · الشرقية</small>
+                    </span>
+                    <span class="map__pin-go" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                    </span>
+                </a>
+            </div>
+
+            <div class="details__actions reveal">
+                <a href="https://www.google.com/maps/dir/?api=1&amp;destination=30.56866%2C31.50617&amp;travelmode=driving" target="_blank" rel="noopener noreferrer" class="btn btn--solid" id="directions-link">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+                    <span data-i18n="directions">الاتجاهات</span>
+                </a>
+                <div class="cal">
+                    <button class="btn btn--ghost" id="add-calendar-btn" type="button" aria-haspopup="true" aria-expanded="false">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4M12 12.5v5M9.5 15h5"/></svg>
+                        <span data-i18n="add_to_calendar">أضف للتقويم</span>
+                    </button>
+                    <div class="cal__menu" id="cal-menu" role="menu" hidden>
+                        <a href="#" role="menuitem" id="cal-google" target="_blank" rel="noopener" data-i18n="cal_google">تقويم Google</a>
+                        <a href="#" role="menuitem" id="cal-ics" data-i18n="cal_apple">آيفون / Outlook</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP (appears only after adding the WhatsApp number in app.js → CONFIG.rsvpWhatsApp) -->
+        <section class="section" id="rsvp" hidden>
+            <header class="section__head reveal">
+                <p class="eyebrow" data-i18n="rsvp_eyebrow">نسعد بردّكم</p>
+                <h2 class="section__title" data-i18n="rsvp_title">تأكيد الحضور</h2>
+            </header>
+            <div class="paper rsvp reveal">
+                <p class="rsvp__text" data-i18n="rsvp_text">يسعدنا تأكيد حضوركم لنستعد لاستقبالكم بأفضل شكل.</p>
+                <div class="rsvp__fields">
+                    <label class="field">
+                        <span class="field__lbl" data-i18n="rsvp_name">الاسم</span>
+                        <input id="rsvp-name" type="text" autocomplete="name" maxlength="60" data-i18n-ph="rsvp_name_ph" placeholder="اكتب اسمك">
+                    </label>
+                    <label class="field field--small">
+                        <span class="field__lbl" data-i18n="rsvp_count">عدد الحضور</span>
+                        <select id="rsvp-count"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+                    </label>
+                </div>
+                <p class="rsvp__hint" id="rsvp-hint" role="alert"></p>
+                <div class="btn-row">
+                    <button class="btn btn--solid" id="rsvp-yes" type="button"><span data-i18n="rsvp_yes">سأحضر بإذن الله</span></button>
+                    <button class="btn btn--ghost" id="rsvp-no" type="button"><span data-i18n="rsvp_no">أعتذر عن الحضور</span></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. INVITATION CARD (drawn from the data above — always matches) -->
+        <section class="section" id="invitation">
+            <header class="section__head reveal">
+                <p class="eyebrow" data-i18n="card_eyebrow">احتفظوا بها</p>
+                <h2 class="section__title" data-i18n="wedding_invitation">كارت الدعوة</h2>
+            </header>
+
+            <div class="invite reveal">
+                <button class="invite__frame" id="tilt-card" type="button" aria-label="Enlarge invitation" data-i18n-aria="aria_zoom">
+                    <img id="invitation-img" src="assets/invitation_en.jpg" width="958" height="1280" alt="Wedding invitation card of Khaled and Aml" decoding="async">
+                    <span class="invite__zoom" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2M11 8.5v5M8.5 11h5"/></svg>
+                        <span data-i18n="tap_zoom">اضغط للتكبير</span>
+                    </span>
+                </button>
+
+                <div class="invite__side">
+                    <p class="invite__text" data-i18n="card_text">احفظوا كارت الدعوة على موبايلكم، أو شاركوه مع العائلة والأصدقاء.</p>
+                    <div class="btn-col">
+                        <a href="assets/invitation_en.jpg" id="download-btn" download="Khaled_Aml_Invitation_English.jpg" class="btn btn--solid">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
+                            <span data-i18n="download_card">تحميل الكارت</span>
+                        </a>
+                        <a href="#" id="whatsapp-share-btn" class="btn btn--ghost">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.93 9.93 0 0 0-8.6 14.9L2 22l5.25-1.38A9.94 9.94 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 1 1 6.97 3.86zm4.49-6.12c-.25-.12-1.46-.72-1.69-.8-.22-.08-.39-.12-.55.12-.16.25-.63.8-.78.97-.14.16-.29.19-.53.06a6.7 6.7 0 0 1-3.32-2.9c-.25-.43.25-.4.72-1.33.08-.16.04-.3-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.74 2.74 0 0 0-.86 2.04 4.76 4.76 0 0 0 1 2.53 10.9 10.9 0 0 0 4.17 3.68c1.55.67 2.16.73 2.94.61.47-.07 1.46-.6 1.66-1.17.21-.58.21-1.07.15-1.17-.06-.11-.22-.17-.47-.29z"/></svg>
+                            <span data-i18n="share_on_whatsapp">مشاركة عبر واتساب</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. FOOTER -->
+        <footer class="footer reveal">
+            <div class="footer__mono" aria-hidden="true"><span data-i18n="monogram">خ&thinsp;&amp;&thinsp;أ</span></div>
+            <p class="footer__msg" data-i18n="cant_wait">ننتظركم لتكتمل فرحتنا</p>
+            <p class="footer__names"><span data-i18n="groom">خالد</span> <span class="amp">&amp;</span> <span data-i18n="bride">أمل</span> · 2026</p>
+            <p class="footer__credit" data-i18n="designed_by">تصميم محمود صلاح</p>
+        </footer>
+    </main>
+
+    <div class="petals" id="main-particles" aria-hidden="true"></div>
+
+    <!-- Lightbox -->
+    <div id="image-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Invitation card">
+        <button class="modal__close" type="button" aria-label="Close">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+        <img class="modal__img" id="modal-img" alt="">
+    </div>
+
+    <script src="app.js?v=3.0"></script>
+</body>
+</html>
