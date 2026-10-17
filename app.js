@@ -97,6 +97,7 @@
             audio_tooltip: 'شغّل الموسيقى لتجربة أجمل 🎵',
             play_audio_error: 'اضغط على زر الموسيقى لتشغيل الأغنية 🎵',
             aria_music: 'تشغيل / إيقاف الموسيقى',
+            aria_share: 'شارك الدعوة على واتساب',
             aria_open: 'افتح الدعوة',
             aria_zoom: 'تكبير كارت الدعوة',
             img_alt: 'كارت دعوة زفاف خالد وأمل — الجمعة 23 أكتوبر 2026 من 3 حتى 6 مساءً، Moments Villa الزقازيق',
@@ -173,6 +174,7 @@
             audio_tooltip: 'Turn on the music for the full experience 🎵',
             play_audio_error: 'Tap the music button to play the song 🎵',
             aria_music: 'Play / pause music',
+            aria_share: 'Share the invitation on WhatsApp',
             aria_open: 'Open the invitation',
             aria_zoom: 'Enlarge the invitation card',
             img_alt: 'Wedding invitation card of Khaled and Aml — Friday 23 October 2026, 3 to 6 PM, Moments Villa, Zagazig',
@@ -464,6 +466,7 @@
         window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank', 'noopener');
     }
     $('#whatsapp-share-btn').addEventListener('click', shareOnWhatsApp);
+    $('#whatsapp-float-btn').addEventListener('click', shareOnWhatsApp);
 
     /* ---------- Invitation card: the designed cards (Arabic + English) ---------- */
     const CARDS = {

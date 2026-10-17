@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Mohamed & Mennatallah — Wedding Invitation
+   Khaled & Aml — Wedding Invitation
    Design: Ivory · Champagne · Antique Gold · Cocoa  (matches the printed card)
    Mobile-first · RTL/LTR via logical properties
    ========================================================================== */
@@ -1067,3 +1067,7 @@ a.detail--link:hover .detail__go { background: var(--cocoa); color: #F6EAD3; bor
 
 /* v14: show the designed cards uncropped (their own proportions) */
 .invite__frame img { aspect-ratio: auto; height: auto; object-fit: contain; }
+
+/* v16: floating WhatsApp button (both languages) */
+.dock__btn--wa { background: #25D366; color: #fff; border-color: transparent; box-shadow: 0 10px 22px -8px rgba(37, 211, 102, .6); }
+.dock__btn--wa:hover { background: #1EBE5A; }
